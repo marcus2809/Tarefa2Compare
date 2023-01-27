@@ -1,25 +1,20 @@
 ﻿
-var compare = new Compare();
+var compareObjects = new Compare<object>();
 
-Console.WriteLine(compare.CompareEquals(1, 2));
-Console.WriteLine(compare.CompareEquals("a", "b"));
-Console.WriteLine(compare.CompareEquals(1d, 1.1d));
+var obj1 = new object();
+var obj2 = new object();
+
+Console.WriteLine(compareObjects.CompareEquals(obj1, obj1));
+
+var compareInts = new Compare<int>();
+
+Console.WriteLine(compareInts.CompareEquals(1,2));
 
 
-class Compare
+class Compare<T>
 {
-    public bool CompareEquals(string a, string b)
+    public bool CompareEquals(T a, T b)
     {
-        return (a == b);
-    }
-
-    public bool CompareEquals(int a, int b)
-    {
-        return (a == b);
-    }
-
-    public bool CompareEquals(double a, double b)
-    {
-        return (a == b);
+        return a.Equals(b);
     }
 }
